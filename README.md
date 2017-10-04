@@ -18,7 +18,7 @@ CHECK PROGRAM "RAID_esxi.example.jp" WITH PATH "/usr/local/libexec/monit-esxcli-
 ## Tested and Supported VMware ESXi.
 - VMware ESXi 6.0, 6.0U1, 6.0U2, 6.0U3, 6.5, 6.5U1 with [Custom HPE ESXi Image](https://www.hpe.com/info/esxidownload)
 - If you use ESXi 5.5 and/or bellow, you should modify the script, like following:
-  - 'sed -e "s/ssacli/hpssacli/g" monit-esxcli-ssacli > monit-esxcli-hpssacli`
+  - `sed -e "s/ssacli/hpssacli/g" monit-esxcli-ssacli > monit-esxcli-hpssacli`
 
 ## Tested environments
 I confirmed follwoing environments.
@@ -33,6 +33,11 @@ I confirmed follwoing environments.
 - HPE Smart Array P840   (ssacli)
 
 ## SEE ALSO
+- [Monit](https://mmonit.com/monit/)
+- [Monit wiki](https://mmonit.com/wiki/)
+- [Monit Manual](https://mmonit.com/monit/documentation/monit.html)
+- [Monit Configuration Examples](https://mmonit.com/wiki/Monit/ConfigurationExamples)
+- [Monit Configuration Examples Hardware RAID](https://mmonit.com/wiki/Monit/ConfigurationExamples#hardwareraid)
 - [Using HPE Custom ESXi Images to Install ESXi on HPE ProLiant Servers](https://www.hpe.com/info/esxidownload)
 - [HPE Smart Storage Administrator - HPE Support Center](https://www.hpe.com/support/ssa)
 - [HPE Smart Storage Administrator User Guide](https://www.hpe.com/support/SSA_UG_en) ([Japanese](https://www.hpe.com/support/SSA_UG_ja))
