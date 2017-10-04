@@ -1,0 +1,40 @@
+#!/bin/sh
+LANG=C LC_ALL=C
+DBDIR=/var/run/monit.esxcli-ssacli
+
+ssacli () {
+	local server=${1}
+	ssh -oBatchMode=yes -T ${server} <<EOF | fgrep -v -e " Temperature " -e " Cache Hit" -e " Cache Misses "
+esxcli ssacli cmd -q "ctrl all show detail config"
+EOF
+}
+
+server="${*}"
+
+if [ -z "${server}" ]; then
+	echo "server is required as specified."
+	exit 1
+fi
+
+[ -d ${DBDIR} ] || mkdir -p -m 0750 ${DBDIR}
+
+if [ -f ${DBDIR}/${server} ]; then
+	TMPFILE=$(mktemp -t monit.ssacli.XXXXX) || exit 1
+
+	ssacli ${server} >> $TMPFILE 2>&1
+
+	if cmp -s ${DBDIR}/${server} $TMPFILE; then
+		rm -f $TMPFILE
+		exit 0
+	else
+		echo "HPE SmartArray RAID Status is changed like following:"; echo
+		diff -U5 ${DBDIR}/${server} $TMPFILE | tail -n+4
+		rm -f $TMPFILE
+		exit 2
+	fi
+else
+	# at the first start
+	ssacli ${server} > ${DBDIR}/${server} 2>&1
+	chmod 0600 ${DBDIR}/${server}
+	exit 0
+fi
