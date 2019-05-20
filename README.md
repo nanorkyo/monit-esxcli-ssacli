@@ -16,7 +16,7 @@ CHECK PROGRAM "RAID_esxi.example.jp" WITH PATH "/usr/local/libexec/monit-esxcli-
 ```
 
 ## Tested and Supported VMware ESXi.
-- VMware ESXi 6.0, 6.0U1, 6.0U2, 6.0U3, 6.5, 6.5U1 with [Custom HPE ESXi Image](https://www.hpe.com/info/esxidownload)
+- VMware ESXi 6.0, 6.0U1, 6.0U2, 6.0U3, 6.5, 6.5U1, 6.5U2 with [Custom HPE ESXi Image](https://www.hpe.com/info/esxidownload)
 - If you use ESXi 5.5 and/or bellow, you should modify the script, like following:
   - `sed -e "s/ssacli/hpssacli/g" monit-esxcli-ssacli > monit-esxcli-hpssacli`
 
@@ -48,4 +48,4 @@ I confirmed follwoing environments.
 - [HPE ProLiant Gen8 Troubleshooting Guide Volume II: Error Message](https://www.hpe.com/support/ProLiant_EMG_v1_en) ([Japanese](https://www.hpe.com/support/ProLiant_EMG_v1_jp))
 
 ## Sponsored
-[Entermotion Inc.](http://entermotion.jp/) (Japanese only)
+[Insight Core Inc.](http://insightcore.co.jp/) (former Entermotion Inc. / Japanese only)
